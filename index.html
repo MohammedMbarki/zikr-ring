@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>خاتم iQibla الذكي - تقنية إسلامية متقدمة</title>
+    <meta name="description"
+        content="خاتم التسبيح الذكي iQibla - شاشة OLED، تذكير بالصلاة، مقاوم للماء IP68. توصيل مجاني في المغرب.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Lateef:wght@400;700&family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+
+    <style>
+        :root {
+            /* Colors */
+            --primary-dark: #000000;
+            --secondary-dark: #0f0f0f;
+            --surface: #1a1a1a;
+            --surface-raised: #242424;
+
+            --gold-primary: #c9a961;
+            --gold-light: #d4b578;
+            --gold-dark: #b59347;
+            --gold-accent: #e8d4a0;
+
+            --emerald: #047857;
+            --emerald-light: #059669;
+
+            --text-primary: #ffffff;
+            --text-secondary: #b8b8b8;
+            --text-tertiary: #8a8a8a;
+
+            --border-subtle: rgba(201, 169, 97, 0.12);
+            --border-medium: rgba(201, 169, 97, 0.25);
+
+            /* Typography */
+            --font-display: 'Lateef', serif;
+            --font-body: 'IBM Plex Sans Arabic', sans-serif;
+            --font-heading: 'Noto Kufi Arabic', sans-serif;
+
+            /* Spacing */
+            --section-padding: 6rem;
+            --container-padding: 2rem;
+
+            /* Transitions */
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none !important;
+            color: inherit;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--primary-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Subtle background gradient */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(201, 169, 97, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(4, 120, 87, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        ::selection {
+            background: var(--gold-primary);
+            color: var(--primary-dark);
+        }
+
+        .page-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+        }
+
+        @media (min-width: 768px) {
+            :root {
+                --container-padding: 3rem;
+                --section-padding: 8rem;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            :root {
+                --container-padding: 4rem;
+            }
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(2.25rem, 5vw, 4.5rem);
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .animate-fade-up {
+            opacity: 0;
+            animation: fadeUp 0.8s ease-out forwards;
+        }
+
+        /* Top Banner */
+        .top-banner {
+            background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
+            padding: 0.875rem 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .top-banner i {
+            margin-left: 0.5rem;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 52px;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            padding: 1.25rem 0;
+            transition: all var(--transition-base);
+        }
+
+        header.scrolled {
+            top: 0;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            padding: 1rem 0;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: var(--font-display);
+            transition: all var(--transition-fast);
+        }
+
+        .logo:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        .logo-icon {
+            font-size: 2.25rem;
+            color: var(--gold-primary);
+            filter: drop-shadow(0 2px 8px rgba(201, 169, 97, 0.3));
+        }
+
+        /* Navigation */
+        .desktop-nav {
+            display: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        @media (min-width: 1024px) {
+            .desktop-nav {
+                display: flex;
+            }
+        }
+
+        .nav-link {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color var(--transition-fast);
+        }
+
+        .nav-link:hover {
+            color: var(--gold-primary);
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        @media (min-width: 1024px) {
+            .menu-toggle {
+                display: none;
+            }
+        }
+
+        .menu-toggle span {
+            width: 26px;
+            height: 2px;
+            background: var(--gold-primary);
+            border-radius: 2px;
+            transition: all var(--transition-base);
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            max-width: 380px;
+            height: 100vh;
+            background: var(--secondary-dark);
+            transform: translateX(-100%);
+            transition: transform var(--transition-smooth);
+            z-index: 998;
+            padding: 6rem 2rem 2rem;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .mobile-nav-link {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            padding: 1rem 1.25rem;
+            border-radius: 12px;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 0.875rem;
+        }
+
+        .mobile-nav-link i {
+            color: var(--gold-primary);
+            font-size: 1.125rem;
+        }
+
+        .mobile-nav-link:hover {
+            background: rgba(201, 169, 97, 0.08);
+            color: var(--text-primary);
+        }
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-base);
+            z-index: 997;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 150px 0 5rem;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1.1fr 1fr;
+                gap: 6rem;
+            }
+        }
+
+        .hero-content {
+            text-align: center;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-content {
+                text-align: right;
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            padding: 0.625rem 1.25rem;
+            background: rgba(201, 169, 97, 0.08);
+            border: 1px solid var(--border-medium);
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--gold-primary);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .hero h1 {
+            margin-bottom: 1.75rem;
+        }
+
+        .hero-description {
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            color: var(--text-secondary);
+            line-height: 1.75;
+            margin-bottom: 2.5rem;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-description {
+                margin-right: 0;
+            }
+        }
+
+        .hero-description strong {
+            color: var(--emerald-light);
+            font-weight: 600;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .hero-actions {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-actions {
+                justify-content: flex-start;
+            }
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.625rem;
+            padding: 1.125rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            border: none;
+            font-family: var(--font-body);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+            opacity: 0;
+            transition: opacity var(--transition-base);
+        }
+
+        .btn:hover::before {
+            opacity: 1;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            color: var(--primary-dark);
+            box-shadow: 0 4px 20px rgba(201, 169, 97, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(201, 169, 97, 0.45);
+        }
+
+        .btn-primary:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1.5px solid var(--border-medium);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(201, 169, 97, 0.08);
+            border-color: var(--gold-primary);
+        }
+
+        .hero-features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-features {
+                justify-content: flex-start;
+            }
+        }
+
+        .feature-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: var(--surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+        }
+
+        .feature-badge:hover {
+            background: var(--surface-raised);
+            border-color: var(--border-medium);
+        }
+
+        .feature-badge i {
+            color: var(--gold-primary);
+            font-size: 1rem;
+        }
+
+        /* 3D Model */
+        .model-container {
+            position: relative;
+            height: 450px;
+            border-radius: 24px;
+            overflow: hidden;
+            background: var(--surface);
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        @media (min-width: 768px) {
+            .model-container {
+                height: 550px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .model-container {
+                height: 650px;
+            }
+        }
+
+        model-viewer {
+            width: 100%;
+            height: 100%;
+            --poster-color: transparent;
+        }
+
+        /* Trust Section */
+        .trust-section {
+            padding: 4rem 0;
+            background: var(--surface);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 640px) {
+            .trust-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .trust-item {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: var(--surface-raised);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            transition: all var(--transition-base);
+            position: relative;
+        }
+
+        .trust-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(201, 169, 97, 0.08), transparent 70%);
+            border-radius: 16px;
+            opacity: 0;
+            transition: opacity var(--transition-base);
+        }
+
+        .trust-item:hover {
+            transform: translateY(-6px);
+            border-color: var(--gold-primary);
+            box-shadow: 0 10px 35px rgba(201, 169, 97, 0.2);
+        }
+
+        .trust-item:hover::before {
+            opacity: 1;
+        }
+
+        .trust-icon {
+            font-size: 3rem;
+            color: var(--emerald-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .trust-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .trust-item p {
+            font-size: 0.95rem;
+            color: var(--text-tertiary);
+        }
+
+        /* Section Header */
+        .section {
+            padding: var(--section-padding) 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--gold-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            margin-bottom: 1.25rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .feature-card {
+            padding: 2.5rem 2rem;
+            background: var(--surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            transition: all var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-primary), var(--gold-light));
+            transform: scaleX(0);
+            transition: transform var(--transition-smooth);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--gold-primary);
+            box-shadow: 0 12px 40px rgba(201, 169, 97, 0.25);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--gold-primary);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            transition: all var(--transition-base);
+            filter: drop-shadow(0 2px 10px rgba(201, 169, 97, 0.3));
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+            filter: drop-shadow(0 4px 15px rgba(201, 169, 97, 0.5));
+        }
+
+        .feature-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.975rem;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            padding: var(--section-padding) 0;
+            background: var(--surface);
+            text-align: center;
+        }
+
+        .quote-text {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 700;
+            font-style: italic;
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+            color: var(--gold-light);
+        }
+
+        .quote-author {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: var(--section-padding) 0;
+            background: linear-gradient(135deg, rgba(201, 169, 97, 0.04), rgba(4, 120, 87, 0.03));
+        }
+
+        .cta-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-text {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        .price-box {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding: 2.5rem 3.5rem;
+            background: var(--surface);
+            border: 2px solid var(--gold-primary);
+            border-radius: 20px;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .price-current {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--gold-primary);
+            line-height: 1;
+            font-family: var(--font-heading);
+        }
+
+        .price-old {
+            font-size: 1.35rem;
+            color: var(--text-tertiary);
+            text-decoration: line-through;
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 0 2.5rem;
+            background: var(--surface);
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            color: var(--gold-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--surface-raised);
+            border: 1px solid var(--border-subtle);
+            border-radius: 50%;
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            transition: all var(--transition-base);
+        }
+
+        .social-link:hover {
+            background: var(--gold-primary);
+            color: var(--primary-dark);
+            border-color: var(--gold-primary);
+            transform: translateY(-2px);
+        }
+
+        .footer-copy {
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        /* Sticky Bar */
+        .sticky-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 15, 15, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 1.25rem 1.5rem;
+            border-top: 1px solid var(--border-medium);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 996;
+            box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.5);
+            transform: translateY(100%);
+            transition: transform var(--transition-base);
+            padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+        }
+
+        .sticky-bar.visible {
+            transform: translateY(0);
+        }
+
+        @media (min-width: 1024px) {
+            .sticky-bar {
+                display: none;
+            }
+        }
+
+        .sticky-price-info .price-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold-primary);
+            line-height: 1;
+        }
+
+        .sticky-price-info .price-was {
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+            text-decoration: line-through;
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Utilities */
+        .desktop-only {
+            display: none;
+        }
+
+        @media (min-width: 1024px) {
+            .desktop-only {
+                display: block;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-only {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-nav">
+            <a href="#features" class="mobile-nav-link">
+                <i class="fa-solid fa-gem"></i>
+                المميزات
+            </a>
+            <a href="#cta" class="mobile-nav-link">
+                <i class="fa-solid fa-shopping-bag"></i>
+                اطلب الآن
+            </a>
+            <a href="#contact" class="mobile-nav-link">
+                <i class="fa-solid fa-envelope"></i>
+                اتصل بنا
+            </a>
+        </nav>
+    </div>
+
+    <div class="page-wrapper">
+        <div class="top-banner">
+            <i class="fa-solid fa-truck-fast"></i>
+            التوصيل مجاني وسريع لجميع مدن المغرب 🇲🇦
+        </div>
+
+        <header id="header">
+            <div class="container">
+                <div class="header-inner">
+                    <a href="#" class="logo">
+                        <i class="fa-solid fa-ring logo-icon"></i>
+                        <span>iQibla</span>
+                    </a>
+
+                    <nav class="desktop-nav">
+                        <a href="#features" class="nav-link">المميزات</a>
+                        <a href="#cta" class="nav-link">اطلب الآن</a>
+                        <a href="#contact" class="nav-link">اتصل بنا</a>
+                    </nav>
+
+                    <div class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <div class="hero-badge animate-fade-up">
+                            <i class="fa-solid fa-certificate"></i>
+                            خاتم التسبيح الذكي
+                        </div>
+
+                        <h1 class="animate-fade-up" style="animation-delay: 0.1s;">
+                            تواصل مع <span class="text-gradient">قبلتك</span><br>
+                            وتتبع صلواتك
+                        </h1>
+
+                        <p class="hero-description animate-fade-up" style="animation-delay: 0.2s;">
+                            خاتم ذكي متقدم مع شاشة OLED عالية الدقة لتذكيرك بأوقات الصلاة. تصميم أنيق مقاوم للماء
+                            عداد إلكتروني دقيق، واتصال بلوتوث.
+                            <br><br>
+                            <strong>متوفر الآن في المغرب مع الدفع عند الاستلام</strong>
+                        </p>
+
+                        <div class="hero-actions desktop-only animate-fade-up" style="animation-delay: 0.3s;">
+                            <a href="https://site-paiement-maroc.com/checkout" class="btn btn-primary">
+                                <i class="fa-solid fa-shopping-bag"></i>
+                                اطلب الآن - 499 درهم
+                            </a>
+                            <a href="#features" class="btn btn-secondary">
+                                <i class="fa-solid fa-circle-info"></i>
+                                المزيد من المعلومات
+                            </a>
+                        </div>
+
+                        <div class="hero-features animate-fade-up" style="animation-delay: 0.4s;">
+                            <div class="feature-badge">
+                                <i class="fa-solid fa-shield-check"></i>
+                                أصلي 100%
+                            </div>
+                            <div class="feature-badge">
+                                <i class="fa-solid fa-droplet"></i>
+                                مقاوم للماء
+                            </div>
+                            <div class="feature-badge">
+                                <i class="fa-solid fa-battery-full"></i>
+                                بطارية طويلة
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="model-container animate-fade-up" style="animation-delay: 0.2s;">
+                        <model-viewer src="./images/zikr-ring.glb" poster="./images/a1.png" alt="iQibla Smart Ring"
+                            auto-rotate camera-controls shadow-intensity="1.5" shadow-softness="0.8" disable-zoom>
+                            <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="./images/image.png" style="max-height: 90%;">
+                            </div>
+                        </model-viewer>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="trust-section">
+            <div class="container">
+                <div class="trust-grid">
+                    <div class="trust-item reveal">
+                        <i class="fa-solid fa-truck-fast trust-icon"></i>
+                        <h3>توصيل سريع</h3>
+                        <p>24-48 ساعة لجميع المدن</p>
+                    </div>
+                    <div class="trust-item reveal">
+                        <i class="fa-solid fa-hand-holding-dollar trust-icon"></i>
+                        <h3>الدفع عند الاستلام</h3>
+                        <p>ادفع بعد المعاينة</p>
+                    </div>
+                    <div class="trust-item reveal">
+                        <i class="fa-solid fa-mobile-screen-button trust-icon"></i>
+                        <h3>تطبيق ذكي</h3>
+                        <p>تتبع الأذكار بسهولة</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="features">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div class="section-label">المميزات</div>
+                    <h2 class="section-title">تقنيات <span class="text-gradient">iQibla</span> المتقدمة</h2>
+                    <p class="section-subtitle">
+                        خاتم ذكي مصمم بأحدث التقنيات لمساعدتك على الالتزام بعباداتك اليومية
+                    </p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card reveal">
+                        <i class="fa-solid fa-kaaba feature-icon"></i>
+                        <h3>مواقيت الصلاة</h3>
+                        <p>تذكير دقيق بأوقات الصلوات الخمس عبر اهتزاز لطيف ومنبهات قابلة للتخصيص</p>
+                    </div>
+
+                    <div class="feature-card reveal">
+                        <i class="fa-solid fa-display feature-icon"></i>
+                        <h3>شاشة OLED</h3>
+                        <p>شاشة رقمية واضحة تعرض الوقت وعدد التسبيحات والمعلومات المهمة</p>
+                    </div>
+
+                    <div class="feature-card reveal">
+                        <i class="fa-solid fa-droplet feature-icon"></i>
+                        <h3>مقاوم للماء</h3>
+                        <p>تصميم متين مقاوم للماء والغبار، مناسب للوضوء والاستخدام اليومي</p>
+                    </div>
+
+                    <div class="feature-card reveal">
+                        <i class="fa-solid fa-hand-sparkles feature-icon"></i>
+                        <h3>عداد تسبيح ذكي</h3>
+                        <p>اهتزاز تلقائي عند كل 33، 66، 99، أو 100 تسبيحة مع إمكانية التخصيص</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="quote-section">
+            <div class="container">
+                <div class="reveal">
+                    <div class="quote-text">
+                        "أَلا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ"
+                    </div>
+                    <p class="quote-author">رفيقك الدائم في كل مكان</p>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="cta-section" id="cta">
+            <div class="container">
+                <div class="cta-content reveal">
+                    <h2>احصل على خاتم <span class="text-gradient">iQibla</span> الآن</h2>
+                    <p class="cta-text">
+                        عرض محدود! خصم 44% على السعر الأصلي<br>
+                        مع توصيل مجاني والدفع عند الاستلام
+                    </p>
+
+                    <div class="price-box">
+                        <div class="discount-badge">وفر 400 درهم</div>
+                        <div class="price-current">499 درهم</div>
+                        <div class="price-old">899 درهم</div>
+                    </div>
+
+                    <a href="https://site-paiement-maroc.com/checkout" class="btn btn-primary"
+                        style="font-size: 1.15rem; padding: 1.375rem 2.5rem;">
+                        <i class="fa-solid fa-shopping-bag"></i>
+                        اطلب الآن مع التوصيل المجاني
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer id="contact">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <i class="fa-solid fa-ring"></i>
+                    </div>
+
+                    <p class="footer-text">
+                        iQibla - رفيقك الذكي في العبادة والذكر<br>
+                        منتج أصلي 100% مع ضمان الجودة
+                    </p>
+
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="WhatsApp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="TikTok">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </div>
+
+                    <div class="footer-copy">
+                        جميع الحقوق محفوظة © iQibla Maroc 2026
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div class="sticky-bar visible" id="stickyBar">
+        <div class="sticky-price-info">
+            <div class="price-amount">499 درهم</div>
+            <div class="price-was">899 درهم</div>
+        </div>
+        <a href="https://site-paiement-maroc.com/checkout" class="btn btn-primary" style="padding: 1rem 1.75rem;">
+            اطلب الآن
+        </a>
+    </div>
+
+    <script>
+        // Scroll Reveal
+        const reveals = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        reveals.forEach(el => revealObserver.observe(el));
+
+        // Header Scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('overlay');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function toggleMenu() {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        }
+
+        menuToggle?.addEventListener('click', toggleMenu);
+        overlay?.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        const offset = 100;
+                        const targetPos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                        window.scrollTo({ top: targetPos, behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // Sticky Bar
+        const stickyBar = document.getElementById('stickyBar');
+        const hero = document.querySelector('.hero');
+
+        if (stickyBar && hero) {
+            const stickyObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    stickyBar.classList.toggle('visible', !entry.isIntersecting);
+                });
+            }, { threshold: 0.1 });
+
+            stickyObserver.observe(hero);
+        }
+
+        // Prevent Double-Tap Zoom
+        let lastTouch = 0;
+        document.addEventListener('touchend', (e) => {
+            const now = Date.now();
+            if (now - lastTouch <= 300) {
+                e.preventDefault();
+            }
+            lastTouch = now;
+        }, false);
+
+        // Stagger Reveals
+        document.querySelectorAll('.features-grid .reveal, .trust-grid .reveal').forEach((el, i) => {
+            el.style.transitionDelay = `${i * 0.1}s`;
+        });
+    </script>
+</body>
+
+</html>
